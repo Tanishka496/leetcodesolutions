@@ -1,61 +1,51 @@
 class Solution {
-    public int[] searchRange(int[] nums, int target) 
+    public int[] searchRange(int[] nums, int target)
     {
-        
-        int start =first(nums,target);
-        int end =last(nums,target);
-        return  new int[]{start,end};
+        int f= first(nums,target);
+        int l=last(nums,target);
+        return new int[]{f,l};           
     }
-
-    private int first(int[] nums , int target)
+    private static int first(int[] nums,int target)
     {
         int low=0;
         int high=nums.length-1;
         int ans=-1;
-
         while(low<=high)
         {
-            int mid=low+(high-low)/2;
-
+            int mid = low+(high-low)/2;
             if(nums[mid]==target)
             {
                 ans=mid;
                 high=mid-1;
-
             }
             else if(nums[mid]<target)
-            {   
-                low = mid+1;
+            {
+                low=mid+1;
             }
             else
-                high=mid-1;
-
+              high=mid-1;
         }
         return ans;
     }
-    private int last(int[] nums , int target)
+    private static int last(int[] nums,int target)
     {
         int low=0;
         int high=nums.length-1;
         int ans=-1;
-
         while(low<=high)
         {
-            int mid=low+(high-low)/2;
-
+            int mid = low+(high-low)/2;
             if(nums[mid]==target)
             {
                 ans=mid;
                 low=mid+1;
-
             }
             else if(nums[mid]<target)
-            {   
-                low = mid+1;
+            {
+                low=mid+1;
             }
             else
-                high=mid-1;
-
+              high=mid-1;
         }
         return ans;
     }
